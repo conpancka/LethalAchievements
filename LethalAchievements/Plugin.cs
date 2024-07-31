@@ -76,7 +76,7 @@ namespace LethalAchievements
                            "____________________________\n\n\n" +
                            $"Comedy Gold: {AchievementManager.instance.comedyGoldText}\n" +
                            $"Not The Bees!: {AchievementManager.instance.notTheBeesText}\n" +
-                           $"" +
+                           $"epic poop" +
                            "\n\n";
                 },
                 Description = "To view your unlocked achievements.",

@@ -32,11 +32,7 @@ namespace LethalAchievements
                 Plugin.instance.ShowAchievementPopup(name, desc, icon);
                 
                 comedyGoldUnlocked = true;
-            }
-            else
-            {
-                Plugin.mls.LogWarning("Comedy Gold achievement is already unlocked!");
-
+                
                 comedyGoldText = "Unlocked";
             }
         }
@@ -51,13 +47,9 @@ namespace LethalAchievements
 
                 Plugin.instance.ShowAchievementPopup(name, desc, icon);
                 
-                comedyGoldUnlocked = true;
-            }
-            else
-            {
-                Plugin.mls.LogWarning("Comedy Gold achievement is already unlocked!");
-
-                comedyGoldText = "Unlocked";
+                notTheBeesUnlocked = true;
+                
+                notTheBeesText = "Unlocked";
             }
         }
     }
