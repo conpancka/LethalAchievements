@@ -7,6 +7,7 @@ using BepInEx.Logging;
 using HarmonyLib;
 using conpancka.Utils;
 using LethalAchievements.Patches;
+using LethalModDataLib.Features;
 using UnityEngine;
 using TerminalApi;
 using TerminalApi.Classes;
@@ -43,7 +44,6 @@ namespace LethalAchievements
             }
             
             AchievementManager.Initialize();
-            TerminalManager.Initialize();
 
             mls = BepInEx.Logging.Logger.CreateLogSource(modGUID);
             
@@ -70,20 +70,19 @@ namespace LethalAchievements
                 DisplayTextSupplier = () =>
                 {
                     // command contents
-                    mls.LogError("Achievements command ran from terminal");
                     return "ACHIEVEMENT LIST\n\n" +
                            "Enter the name of a certain achievement to view more info about it\n" +
                            "____________________________\n\n\n" +
-                           $"Comedy Gold: {AchievementManager.instance.comedyGoldText}\n" +
-                           $"Not The Bees!: {AchievementManager.instance.notTheBeesText}\n" +
-                           $"epic poop" +
+                           $"Comedy Gold: {AchievementManager.comedyGoldText}\n" +
+                           $"Not The Bees!: {AchievementManager.notTheBeesText}\n" +
+                           $"Some other achievement: Locked" +
                            "\n\n";
                 },
                 Description = "To view your unlocked achievements.",
                 Category = "Other"
             });
             
-            harmony.PatchAll(typeof(PlayerControllerBPatch));
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
         public void ShowAchievementPopup(string name, string description, Sprite icon)

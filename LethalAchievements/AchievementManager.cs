@@ -1,4 +1,6 @@
 ﻿using conpancka.Utils;
+using LethalModDataLib.Attributes;
+using LethalModDataLib.Enums;
 using UnityEngine;
 
 namespace LethalAchievements
@@ -7,11 +9,17 @@ namespace LethalAchievements
     {
         public static AchievementManager instance;
 
-        private bool comedyGoldUnlocked = false;
-        public string comedyGoldText = "Locked";
+        // comedy gold
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave, ResetWhen.OnGameOver)]
+        private static bool comedyGoldUnlocked = false;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave, ResetWhen.OnGameOver)]
+        public static string comedyGoldText = "Locked";
         
-        private bool notTheBeesUnlocked = false;
-        public string notTheBeesText = "Locked";
+        // not the bees
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave, ResetWhen.OnGameOver)]
+        private static bool notTheBeesUnlocked = false;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave, ResetWhen.OnGameOver)]
+        public static string notTheBeesText = "Locked";
         
         public static void Initialize()
         {
@@ -21,7 +29,7 @@ namespace LethalAchievements
             }
         }
         
-        public void ComedyGold()
+        public static void ComedyGold()
         {
             if (!comedyGoldUnlocked)
             {
@@ -37,9 +45,9 @@ namespace LethalAchievements
             }
         }
         
-        public void NotTheBees()
+        public static void NotTheBees()
         {
-            if (!comedyGoldUnlocked)
+            if (!notTheBeesUnlocked)
             {
                 string name = "Not The Bees!";
                 string desc = "Successfully complete a hive run";
