@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
@@ -69,18 +70,23 @@ namespace LethalAchievements
                     $"Target Acquired: {AchievementManager.targetAcquiredText}\n" +
                     $"Comedy Gold: {AchievementManager.comedyGoldText}\n" +
                     $"Employee Of The Month: {AchievementManager.employeeOfTheMonthText}\n" +
+                    $"Pest Control: {AchievementManager.pestControlText}\n" +
                     $"This, Is My Boomstick!: {AchievementManager.thisIsMyBoomstickText}\n" +
                     $"Name: {AchievementManager.comedyGoldText}\n" +
                     $"Name: {AchievementManager.comedyGoldText}\n" +
                     $"Name: {AchievementManager.comedyGoldText}\n" +
-                    $"Name: {AchievementManager.comedyGoldText}\n" +
-                    $"Name: {AchievementManager.comedyGoldText}" +
+                    $"Piece Of Cake: {AchievementManager.pieceOfCakeText}" +
                     "\n\n",
                 Description = "To view your unlocked achievements.",
                 Category = "Other"
             });
             
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+        }
+
+        private void Update()
+        {
+            AchievementManager.PieceOfCake();
         }
 
         public void ShowAchievementPopup(string name, string description, Sprite icon)

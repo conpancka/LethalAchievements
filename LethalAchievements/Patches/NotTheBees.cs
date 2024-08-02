@@ -3,7 +3,7 @@
 namespace LethalAchievements.Patches
 {
     [HarmonyPatch(typeof(GrabbableObject))]
-    internal class GrabbableObjectPatch
+    internal class NotTheBees
     {
         [HarmonyPostfix]
         [HarmonyPatch(nameof(GrabbableObject.DiscardItem))]

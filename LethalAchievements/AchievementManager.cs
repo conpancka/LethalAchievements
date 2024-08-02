@@ -27,6 +27,16 @@ namespace LethalAchievements
         private static bool thisIsMyBoomstickUnlocked;
         public static string thisIsMyBoomstickText = "Locked";
         
+        // pest control
+        private static bool pestControlUnlocked;
+        public static string pestControlText = "Locked";
+        
+        
+        
+        // pest control
+        private static bool pieceOfCakeUnlocked;
+        public static string pieceOfCakeText = "Locked";
+        
         public static void Initialize()
         {
             if (instance == null)
@@ -112,6 +122,44 @@ namespace LethalAchievements
                 thisIsMyBoomstickUnlocked = true;
                 
                 thisIsMyBoomstickText = "Unlocked";
+            }
+        }
+        
+        public static void PestControl()
+        {
+            if (!pestControlUnlocked)
+            {
+                string name = "Pest Control";
+                string desc = "Kill a hoarding bug";
+                Sprite icon = AssetUtils.LoadSpriteFromEmbeddedResources("PestControl.png");
+
+                Plugin.instance.ShowAchievementPopup(name, desc, icon);
+                
+                pestControlUnlocked = true;
+                
+                pestControlText = "Unlocked";
+            }
+        }
+        
+        
+        
+        
+        public static void PieceOfCake()
+        {
+            if (comedyGoldUnlocked || notTheBeesUnlocked || employeeOfTheMonthUnlocked || targetAcquiredUnlocked || thisIsMyBoomstickUnlocked || pestControlUnlocked/*|| MORE THINGS*/)
+            {
+                if (!pieceOfCakeUnlocked)
+                {
+                    string name = "Piece Of Cake";
+                    string desc = "Unlock every other achievement";
+                    Sprite icon = AssetUtils.LoadSpriteFromEmbeddedResources("PieceOfCake.png");
+
+                    Plugin.instance.ShowAchievementPopup(name, desc, icon);
+
+                    pieceOfCakeUnlocked = true;
+
+                    pieceOfCakeText = "Unlocked";
+                }
             }
         }
     }
