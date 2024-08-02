@@ -5,11 +5,13 @@ This mod contains 3 main features:
 
 * A popup that appears in the corner of the screen to inform you when you unlock an achievement
 * A terminal command to show all of your unlocked achievements
-* Saving to a file to make it not delete your achievements when you close the game. Achievements are save-specific and not global (if you start a new save it will restart you achievement progress)
+* Saving to a file to make it not delete your achievements when you close the game. Achievements are save-specific and not global (if you start a new save it will restart your achievement progress)
 
 Custom achievements are currently not supported, but might be in a future update.
 
 I was inspired to create this mod when I stumbled across [this](https://steamcommunity.com/app/1966720/discussions/0/4032474464292386098/) Steam community post. Nearly all the achievement ideas came from here and they deserve credit for coming up with the idea.
+
+There are currently 10 achievements in this mod.
 
 ## Terminal
 
