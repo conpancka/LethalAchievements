@@ -1,6 +1,4 @@
 ﻿using conpancka.Utils;
-using LethalModDataLib.Attributes;
-using LethalModDataLib.Enums;
 using UnityEngine;
 
 namespace LethalAchievements
@@ -10,16 +8,24 @@ namespace LethalAchievements
         public static AchievementManager instance;
 
         // comedy gold
-        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave, ResetWhen.OnGameOver)]
-        private static bool comedyGoldUnlocked = false;
-        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave, ResetWhen.OnGameOver)]
+        private static bool comedyGoldUnlocked;
         public static string comedyGoldText = "Locked";
         
         // not the bees
-        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave, ResetWhen.OnGameOver)]
-        private static bool notTheBeesUnlocked = false;
-        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave, ResetWhen.OnGameOver)]
+        private static bool notTheBeesUnlocked;
         public static string notTheBeesText = "Locked";
+        
+        // employee of the month
+        private static bool employeeOfTheMonthUnlocked;
+        public static string employeeOfTheMonthText = "Locked";
+        
+        // target acquired
+        private static bool targetAcquiredUnlocked;
+        public static string targetAcquiredText = "Locked";
+        
+        // this is my boomstick
+        private static bool thisIsMyBoomstickUnlocked;
+        public static string thisIsMyBoomstickText = "Locked";
         
         public static void Initialize()
         {
@@ -58,6 +64,54 @@ namespace LethalAchievements
                 notTheBeesUnlocked = true;
                 
                 notTheBeesText = "Unlocked";
+            }
+        }
+        
+        public static void EmployeeOfTheMonth()
+        {
+            if (!employeeOfTheMonthUnlocked)
+            {
+                string name = "Employee Of The Month";
+                string desc = "Complete your first quota";
+                Sprite icon = AssetUtils.LoadSpriteFromEmbeddedResources("EmployeeOfTheMonth.png");
+
+                Plugin.instance.ShowAchievementPopup(name, desc, icon);
+                
+                employeeOfTheMonthUnlocked = true;
+                
+                employeeOfTheMonthText = "Unlocked";
+            }
+        }
+        
+        public static void TargetAcquired()
+        {
+            if (!targetAcquiredUnlocked)
+            {
+                string name = "Target Acquired";
+                string desc = "Get killed by a turret";
+                Sprite icon = AssetUtils.LoadSpriteFromEmbeddedResources("TargetAcquired.png");
+
+                Plugin.instance.ShowAchievementPopup(name, desc, icon);
+                
+                targetAcquiredUnlocked = true;
+                
+                targetAcquiredText = "Unlocked";
+            }
+        }
+        
+        public static void ThisIsMyBoomstick()
+        {
+            if (!thisIsMyBoomstickUnlocked)
+            {
+                string name = "This, Is My Boomstick!";
+                string desc = "Fire a Nutcracker's shotgun";
+                Sprite icon = AssetUtils.LoadSpriteFromEmbeddedResources("ThisIsMyBoomstick.png");
+
+                Plugin.instance.ShowAchievementPopup(name, desc, icon);
+                
+                thisIsMyBoomstickUnlocked = true;
+                
+                thisIsMyBoomstickText = "Unlocked";
             }
         }
     }

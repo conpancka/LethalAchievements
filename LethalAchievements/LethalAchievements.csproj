@@ -42,9 +42,6 @@
         <Reference Include="BepInEx, Version=5.4.20.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\BepInEx.BaseLib.5.4.20\lib\net35\BepInEx.dll</HintPath>
         </Reference>
-        <Reference Include="MaxWasUnavailable.LethalModDataLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\MaxWasUnavailable.LethalModDataLib.1.2.2\lib\net472\MaxWasUnavailable.LethalModDataLib.dll</HintPath>
-        </Reference>
         <Reference Include="Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
           <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
         </Reference>
@@ -279,9 +276,12 @@
         <Compile Include="AchievementManager.cs" />
         <Compile Include="AchievementPopupUI.cs" />
         <Compile Include="AssetUtils.cs" />
-        <Compile Include="Patches\GrabbableObjectPatch.cs" />
+        <Compile Include="Patches\EmployeeOfTheMonth.cs" />
+        <Compile Include="Patches\NotTheBees.cs" />
+        <Compile Include="Patches\TargetAcquired.cs" />
+        <Compile Include="Patches\ThisIsMyBoomstick.cs" />
         <Compile Include="Plugin.cs" />
-        <Compile Include="Patches\PlayerControllerBPatch.cs" />
+        <Compile Include="Patches\ComedyGold.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
@@ -294,6 +294,14 @@
     <ItemGroup>
       <None Include="App.config" />
       <None Include="packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="Assets\Icons\EmployeeOfTheMonth.png" />
+      <EmbeddedResource Include="Assets\Icons\TargetAcquired.png" />
+      <EmbeddedResource Include="Assets\Icons\ThisIsMyBoomstick.png" />
+      <Content Include="Thunderstore\icon.png" />
+      <Content Include="Thunderstore\manifest.json" />
+      <Content Include="Thunderstore\README.md" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

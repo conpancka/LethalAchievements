@@ -1,17 +1,11 @@
-﻿using System;
-using System.Media;
-using System.Reflection;
+﻿using System.Reflection;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using conpancka.Utils;
-using LethalAchievements.Patches;
-using LethalModDataLib.Features;
 using UnityEngine;
-using TerminalApi;
 using TerminalApi.Classes;
-using static TerminalApi.Events.Events;
 using static TerminalApi.TerminalApi;
 
 namespace LethalAchievements
@@ -68,16 +62,20 @@ namespace LethalAchievements
             AddCommand("Achievements", new CommandInfo()
             {
                 DisplayTextSupplier = () =>
-                {
-                    // command contents
-                    return "ACHIEVEMENT LIST\n\n" +
-                           "Enter the name of a certain achievement to view more info about it\n" +
-                           "____________________________\n\n\n" +
-                           $"Comedy Gold: {AchievementManager.comedyGoldText}\n" +
-                           $"Not The Bees!: {AchievementManager.notTheBeesText}\n" +
-                           $"Some other achievement: Locked" +
-                           "\n\n";
-                },
+                    "ACHIEVEMENT LIST\n\n" +
+                    "Enter the name of a certain achievement to view more info about it\n" +
+                    "____________________________\n\n\n" +
+                    $"Not The Bees!: {AchievementManager.notTheBeesText}\n" +
+                    $"Target Acquired: {AchievementManager.targetAcquiredText}\n" +
+                    $"Comedy Gold: {AchievementManager.comedyGoldText}\n" +
+                    $"Employee Of The Month: {AchievementManager.employeeOfTheMonthText}\n" +
+                    $"This, Is My Boomstick!: {AchievementManager.thisIsMyBoomstickText}\n" +
+                    $"Name: {AchievementManager.comedyGoldText}\n" +
+                    $"Name: {AchievementManager.comedyGoldText}\n" +
+                    $"Name: {AchievementManager.comedyGoldText}\n" +
+                    $"Name: {AchievementManager.comedyGoldText}\n" +
+                    $"Name: {AchievementManager.comedyGoldText}" +
+                    "\n\n",
                 Description = "To view your unlocked achievements.",
                 Category = "Other"
             });

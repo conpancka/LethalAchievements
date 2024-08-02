@@ -4,7 +4,7 @@ using HarmonyLib;
 namespace LethalAchievements.Patches
 {
     [HarmonyPatch(typeof(PlayerControllerB))]
-    internal class PlayerControllerBPatch
+    internal class ComedyGold
     {
         [HarmonyPostfix]
         [HarmonyPatch("GrabObject")]
