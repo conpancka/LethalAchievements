@@ -11,7 +11,7 @@ Custom achievements are currently not supported, but might be in a future update
 
 I was inspired to create this mod when I stumbled across [this](https://steamcommunity.com/app/1966720/discussions/0/4032474464292386098/) Steam community post. Many of the achievement ideas came from here, so credit goes to them for the idea.
 
-There are currently 10 achievements in this mod.
+There are currently 8 achievements in this mod.
 
 ## Terminal
 
