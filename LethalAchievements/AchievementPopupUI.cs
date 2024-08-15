@@ -21,28 +21,23 @@ public class AchievementPopupUI : MonoBehaviour
         {
             iconImage.sprite = icon;
             iconError.SetActive(false);
-            Plugin.mls.LogInfo("Achievement popup details set with icon");
         }
         else
         {
             iconImage.enabled = false;
             iconError.SetActive(true);
-            Plugin.mls.LogInfo("Achievement popup details set without icon");
         }
         
         if (Plugin.instance.soundOn.Value)
             audioSource.Play();
         
-        // Start the coroutine to handle stay duration and then fade out
         StartCoroutine(ShowAndFadeOut());
     }
 
     private IEnumerator ShowAndFadeOut()
     {
-        // Wait for the stay duration before starting the fade out
         yield return new WaitForSeconds(stayDuration);
 
-        // Start the fade out process
         yield return StartCoroutine(FadeOut());
     }
 

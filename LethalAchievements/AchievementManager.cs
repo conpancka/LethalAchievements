@@ -1,41 +1,64 @@
 ﻿using conpancka.Utils;
+using LethalModDataLib.Attributes;
+using LethalModDataLib.Enums;
 using UnityEngine;
 
 namespace LethalAchievements
 {
     public class AchievementManager
     {
-        public static AchievementManager instance;
+        private static AchievementManager instance;
 
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
+        public static int completion = 0;
+        
         // comedy gold
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         private static bool comedyGoldUnlocked;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         public static string comedyGoldText = "Locked";
         
         // not the bees
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         private static bool notTheBeesUnlocked;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         public static string notTheBeesText = "Locked";
         
         // employee of the month
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         private static bool employeeOfTheMonthUnlocked;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         public static string employeeOfTheMonthText = "Locked";
         
         // target acquired
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         private static bool targetAcquiredUnlocked;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         public static string targetAcquiredText = "Locked";
         
         // this is my boomstick
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         private static bool thisIsMyBoomstickUnlocked;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         public static string thisIsMyBoomstickText = "Locked";
         
         // pest control
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         private static bool pestControlUnlocked;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
         public static string pestControlText = "Locked";
         
+        // dont blink
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
+        private static bool dontBlinkUnlocked;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
+        public static string dontBlinkText = "Locked";
         
-        
-        // pest control
-        private static bool pieceOfCakeUnlocked;
-        public static string pieceOfCakeText = "Locked";
+        // you monster
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
+        private static bool youMonsterUnlocked;
+        [ModData(SaveWhen.OnSave, LoadWhen.OnLoad, SaveLocation.CurrentSave)]
+        public static string youMonsterText = "Locked";
         
         public static void Initialize()
         {
@@ -58,6 +81,8 @@ namespace LethalAchievements
                 comedyGoldUnlocked = true;
                 
                 comedyGoldText = "Unlocked";
+
+                completion++;
             }
         }
         
@@ -74,6 +99,8 @@ namespace LethalAchievements
                 notTheBeesUnlocked = true;
                 
                 notTheBeesText = "Unlocked";
+                
+                completion++;
             }
         }
         
@@ -90,6 +117,8 @@ namespace LethalAchievements
                 employeeOfTheMonthUnlocked = true;
                 
                 employeeOfTheMonthText = "Unlocked";
+                
+                completion++;
             }
         }
         
@@ -106,6 +135,8 @@ namespace LethalAchievements
                 targetAcquiredUnlocked = true;
                 
                 targetAcquiredText = "Unlocked";
+                
+                completion++;
             }
         }
         
@@ -122,6 +153,8 @@ namespace LethalAchievements
                 thisIsMyBoomstickUnlocked = true;
                 
                 thisIsMyBoomstickText = "Unlocked";
+                
+                completion++;
             }
         }
         
@@ -138,28 +171,44 @@ namespace LethalAchievements
                 pestControlUnlocked = true;
                 
                 pestControlText = "Unlocked";
+                
+                completion++;
             }
         }
         
-        
-        
-        
-        public static void PieceOfCake()
+        public static void DontBlink()
         {
-            if (comedyGoldUnlocked || notTheBeesUnlocked || employeeOfTheMonthUnlocked || targetAcquiredUnlocked || thisIsMyBoomstickUnlocked || pestControlUnlocked/*|| MORE THINGS*/)
+            if (!dontBlinkUnlocked)
             {
-                if (!pieceOfCakeUnlocked)
-                {
-                    string name = "Piece Of Cake";
-                    string desc = "Unlock every other achievement";
-                    Sprite icon = AssetUtils.LoadSpriteFromEmbeddedResources("PieceOfCake.png");
+                string name = "Don't Blink";
+                string desc = "Spot a Coilhead";
+                Sprite icon = AssetUtils.LoadSpriteFromEmbeddedResources("DontBlink.png");
 
-                    Plugin.instance.ShowAchievementPopup(name, desc, icon);
+                Plugin.instance.ShowAchievementPopup(name, desc, icon);
+                
+                dontBlinkUnlocked = true;
+                
+                dontBlinkText = "Unlocked";
+                
+                completion++;
+            }
+        }
+        
+        public static void YouMonster()
+        {
+            if (!youMonsterUnlocked)
+            {
+                string name = "You Monster!";
+                string desc = "Hit another crewmate with a shovel";
+                Sprite icon = AssetUtils.LoadSpriteFromEmbeddedResources("YouMonster.png");
 
-                    pieceOfCakeUnlocked = true;
-
-                    pieceOfCakeText = "Unlocked";
-                }
+                Plugin.instance.ShowAchievementPopup(name, desc, icon);
+                
+                youMonsterUnlocked = true;
+                
+                youMonsterText = "Unlocked";
+                
+                completion++;
             }
         }
     }

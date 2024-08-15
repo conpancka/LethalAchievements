@@ -5,6 +5,8 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using conpancka.Utils;
+using LethalModDataLib.Attributes;
+using LethalModDataLib.Enums;
 using UnityEngine;
 using TerminalApi.Classes;
 using static TerminalApi.TerminalApi;
@@ -13,6 +15,7 @@ namespace LethalAchievements
 {
     [BepInPlugin(modGUID, modName, modVersion)]
     [BepInDependency("atomic.terminalapi", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("MaxWasUnavailable.LethalModDataLib", BepInDependency.DependencyFlags.HardDependency)]
     public class Plugin : BaseUnityPlugin
     {
         private const string modGUID = "conpancka.LethalAchievements";
@@ -64,7 +67,8 @@ namespace LethalAchievements
             {
                 DisplayTextSupplier = () =>
                     "ACHIEVEMENT LIST\n\n" +
-                    "Enter the name of a certain achievement to view more info about it\n" +
+                    "View your locked and unlocked achievements\n\n" +
+                    "Achievement Completion: " + Percentage() + "%\n" +
                     "____________________________\n\n\n" +
                     $"Not The Bees!: {AchievementManager.notTheBeesText}\n" +
                     $"Target Acquired: {AchievementManager.targetAcquiredText}\n" +
@@ -72,21 +76,16 @@ namespace LethalAchievements
                     $"Employee Of The Month: {AchievementManager.employeeOfTheMonthText}\n" +
                     $"Pest Control: {AchievementManager.pestControlText}\n" +
                     $"This, Is My Boomstick!: {AchievementManager.thisIsMyBoomstickText}\n" +
-                    $"Name: {AchievementManager.comedyGoldText}\n" +
-                    $"Name: {AchievementManager.comedyGoldText}\n" +
-                    $"Name: {AchievementManager.comedyGoldText}\n" +
-                    $"Piece Of Cake: {AchievementManager.pieceOfCakeText}" +
+                    $"Don't Blink: {AchievementManager.dontBlinkText}\n" +
+                    $"You Monster!: {AchievementManager.youMonsterText}" +
                     "\n\n",
                 Description = "To view your unlocked achievements.",
                 Category = "Other"
             });
             
             harmony.PatchAll(Assembly.GetExecutingAssembly());
-        }
-
-        private void Update()
-        {
-            AchievementManager.PieceOfCake();
+            
+            mls.LogInfo($"{modName} version {modVersion} has been loaded!");
         }
 
         public void ShowAchievementPopup(string name, string description, Sprite icon)
@@ -96,7 +95,8 @@ namespace LethalAchievements
             popupInstance.transform.localScale = Vector3.one * notifScale.Value;
             AchievementPopupUI popupUI = popupInstance.GetComponent<AchievementPopupUI>();
             popupUI.SetDetails(name, description, icon);
-            mls.LogInfo($"Loaded achievement popup with the name: '{name}' and the description: '{description}'.");
         }
+
+        private static string Percentage() => ((int)(0.5f + ((100f * AchievementManager.completion) / 8f))).ToString();
     }
 }
